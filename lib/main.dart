@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 
-const metro ='''MRT Line 6 is a  21.26km line extending from Uttara in the 
-                north to Kamalapur in the south. The line runs parallel to 
-                the Turag River in the west of Dhaka and curves as it moves
-                 south-east following the path of the Buriganga River.
-                The line will be a standard gauge track, including a 
-                total of 16 elevated stations crossing busy areas such as Pallabi
-                and Mirpur. The travel time from north to south Dhaka will be 
-                approximately 35 minutes.''';
+const metro ='''MRT Line 6 is a  21.26km line extending from Uttara in the north to Kamalapur in the south. The line runs parallel to the Turag River in the west of Dhaka and curves as it moves south-east following the path of the Buriganga River.
+The line will be a standard gauge track, including a total of 16 elevated stations crossing busy areas such as Pallabhi and Mirpur. The travel time from north to south Dhaka will be approximately 35 minutes.''';
 
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Scaffold(
+    home: HomePage(),
+  ));
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,6 +125,6 @@ void main() {
           ],
         ),
       ),
-    ),
-  ));
+    );
+  }
 }
