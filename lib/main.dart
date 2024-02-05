@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
                       ),
                       Text(
                         'Dhaka, Bangladesh',
-                        style: TextStyle(fontSize: 14, color: Colors.grey),
+                        style: TextStyle(fontSize: 15, color: Colors.grey),
                       )
                     ],
                   ),
