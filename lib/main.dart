@@ -45,14 +45,14 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Padding _bodySection() {
+  Widget _bodySection() {
     return const Padding(
             padding: EdgeInsets.all(16.0),
             child: Text(metro),
           );
   }
 
-  Padding _NavSection() {
+  Widget _NavSection() {
     return const Padding(
             padding: EdgeInsets.all(8.0),
             child: Row(
@@ -117,7 +117,7 @@ class HomePage extends StatelessWidget {
           );
   }
 
-  Padding _headerSection() {
+  Widget _headerSection() {
     return const Padding(
             padding: EdgeInsets.all(16.0),
             child: Row(
@@ -149,9 +149,14 @@ class HomePage extends StatelessWidget {
           );
   }
 
-  Image _imageSection() {
-    return Image.asset('asset/met.jpg',
-            fit: BoxFit.fill,
-            );
+  Widget _imageSection() {
+    return Stack(
+      children: [
+        Image.asset('asset/met.jpg',
+                fit: BoxFit.fill,
+                ),
+        Text('WELCOME TO MRT' ,style: TextStyle(fontSize: 16,),)
+      ],
+    );
   }
 }
