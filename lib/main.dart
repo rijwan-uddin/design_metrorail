@@ -150,33 +150,37 @@ class HomePage extends StatelessWidget {
 
   Widget _imageSection() {
     return Stack(
+      clipBehavior:Clip.none,
       children: [
         Image.asset(
           'asset/met.jpg',
           fit: BoxFit.fill,
         ),
         const Positioned(
-          bottom: 10,
+          bottom: 150,
            right: 10,
             left: 10,
             child: Text(
             'WELCOME TO MRT',
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Colors.yellow,
+            color: Colors.white54,
             fontSize: 18,
           ),
         )),
         Positioned(
           right: 16,
-          bottom: 12,
-          child: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.favorite,
-                color: Colors.blueAccent,
-                size: 40,
-              )),
+          bottom: -20,//position overflowed by the fav button
+          left: 16,
+          child: Center(
+            child: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.favorite,
+                  color: Colors.yellow,
+                  size: 30,
+                )),
+          ),
         )
       ],
     );
