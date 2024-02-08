@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:design_metrorail/Schedule_List.dart';
 
 const metro =
     '''MRT Line 6 is a  21.26km line extending from Uttara in the north to Kamalapur in the south. The line runs parallel to the Turag River in the west of Dhaka and curves as it moves south-east following the path of the Buriganga River.
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: Schedule(),                          //HomePage(),
     );
   }
 }
