@@ -117,7 +117,7 @@ class _TicketPriceState extends State<TicketPrice> {
                     });
                   },
                 ),
-                SizedBox(width: 20),
+                SizedBox(width: 20.0),
                 DropdownButton<String>(
                   hint: Text('Select from list'),
                   value: toValue,
