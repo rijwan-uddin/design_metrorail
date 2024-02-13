@@ -1,10 +1,9 @@
 import 'package:design_metrorail/TicPrice.dart';
 import 'package:flutter/material.dart';
 import 'package:design_metrorail/Schedule_List.dart';
+import 'package:design_metrorail/landingPage.dart';
+import 'package:design_metrorail/details.dart';
 
-const metro =
-'''MRT Line 6 is a  21.26km line extending from Uttara in the north to Kamalapur in the south. The line runs parallel to the Turag River in the west of Dhaka and curves as it moves south-east following the path of the Buriganga River.
-The line will be a standard gauge track, including a total of 16 elevated stations crossing busy areas such as Pallabhi and Mirpur. The travel time from north to south Dhaka will be approximately 35 minutes.''';
 
 void main() {
   runApp(const MyApp());
@@ -24,17 +23,23 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({
-    super.key,
-  });
+
+class bottomnavBar extends StatefulWidget {
+  const bottomnavBar({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<bottomnavBar> createState() => _landingPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _landingPageState extends State<bottomnavBar> {
   int _selectedIndex = 0;
+
+  List<Widget> _widgetOptions = <Widget>[
+    Text('Home'),
+    Text('Metro'),
+    Text('Search'),
+    Text('Settings'),
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -45,221 +50,68 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _imageSection(),
-            _headerSection(),
-            _Featuresection(),
-            _bodySection(),
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.schedule),
-            label: 'Schedule',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.attach_money),
-            label: 'Ticket Price',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-          switch (index) {
-            case 0:
-            // Navigate to Schedule Page
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Schedule()),
-              );
-              break;
-            case 1:
-            // Navigate to Ticket Price Page
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const TicketPrice()),
-              );
-              break;
-          }
-        },
-        elevation: 5, // Add elevation for shadow effect
-      ),
-    );
-  }
 
-  Widget _bodySection() {
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Text(metro),
-    );
-  }
-
-  Widget _headerSection() {
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Metro Rail',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'Dhaka, Bangladesh',
-                style: TextStyle(fontSize: 15, color: Colors.grey),
-              )
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        elevation: 8,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              buildNavBarItem(0, Icons.home, "Home"),
+              buildNavBarItem(1, Icons.directions_subway, "Metro"),
+              SizedBox(width: 50), // SizedBox to create space for FAB
+              buildNavBarItem(2, Icons.search, "Search"),
+              buildNavBarItem(3, Icons.settings, "Settings"),
             ],
           ),
-          Spacer(),
-          Icon(
-            Icons.star,
-            color: Colors.amber,
-          ),
-          Text(
-            '9.5',
-          )
-        ],
+        ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
-  Widget _imageSection() {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        Image.asset(
-          'asset/met.jpg',
-          fit: BoxFit.fill,
-          height: MediaQuery.of(context).size.height * 0.4,
-          width: double.infinity,
-        ),
-        const Positioned(
-          bottom: 150,
-          right: 10,
-          left: 10,
-          child: Text(
-            'WELCOME TO MRT',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white54,
-              fontSize: 18,
-            ),
+  Widget buildNavBarItem(int index, IconData icon, String label) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          _onItemTapped(index);
+        },
+        borderRadius: BorderRadius.circular(20),
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 200),
+          curve: Curves.easeInOut,
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: _selectedIndex == index ? Colors.blue : Colors.transparent,
           ),
-        ),
-        Positioned(
-          right: 16,
-          bottom: -20,
-          left: 16,
-          child: Center(
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.favorite,
-                color: Colors.yellow,
-                size: 30,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                icon,
+                color: _selectedIndex == index ? Colors.white : Colors.blue,
               ),
-            ),
-          ),
-        )
-      ],
-    );
-  }
-
-  Widget _Featuresection() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          InkWell(
-            onTap: () {
-              // Perform action for CALL button
-              // For example, navigate to a call functionality
-            },
-            child: const Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.call, color: Colors.blue),
-                Padding(
-                  padding: EdgeInsets.only(top: 8.0),
-                  child: Text(
-                    'CALL',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.blue,
-                    ),
-                  ),
+              SizedBox(width: 5),
+              Text(
+                label,
+                style: TextStyle(
+                  color: _selectedIndex == index ? Colors.white : Colors.blue,
+                  fontWeight: FontWeight.bold,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          InkWell(
-            onTap: () {
-              // Perform action for ROUTE button
-              // For example, navigate to a route functionality
-            },
-            child: const Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.near_me, color: Colors.blue),
-                Padding(
-                  padding: EdgeInsets.only(top: 8.0),
-                  child: Text(
-                    'ROUTE',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              // Perform action for SHARE button
-              // For example, share functionality
-            },
-            child: const Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.share, color: Colors.blue),
-                Padding(
-                  padding: EdgeInsets.only(top: 8.0),
-                  child: Text(
-                    'SHARE',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
-
 }
-
-
-
