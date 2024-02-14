@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:design_metrorail/TicPrice.dart';
 import 'package:flutter/material.dart';
 import 'package:design_metrorail/Schedule_List.dart';
-import 'package:design_metrorail/landingPage.dart';
+
 import 'package:design_metrorail/details.dart';
 import 'package:design_metrorail/main.dart';
 
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             _imageSection(),
             _headerSection(),
             _Featuresection(),
@@ -45,8 +45,31 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      //add bottomnav bar
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.home),
+              onPressed: () {
+                // Navigate to settings page or perform settings-related functionality
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                );
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                // Add your settings button functionality here
+              },
+            ),
+          ],
+        ),
+      ),  //add bottomnav bar
     );
+
   }
 
   Widget _bodySection() {
