@@ -448,16 +448,16 @@ class MyHomePage extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text('Drawer Header'),
+              child: Text('Your Account'),
             ),
             ListTile(
-              title: const Text('Drawer Item 1'),
+              title: const Text('Profile'),
               onTap: () {
                 // Add your drawer item 1 functionality here
               },
             ),
             ListTile(
-              title: const Text('Drawer Item 2'),
+              title: const Text('Settings'),
               onTap: () {
                 // Add your drawer item 2 functionality here
               },
@@ -508,11 +508,11 @@ class MyHomePage extends StatelessWidget {
                           page: Schedule(),
                         ),
                         ContainerButton(
-                          title: '',
+                          title: 'MRT Card',
                           page: Container(),
                         ),
                         ContainerButton(
-                          title: '',
+                          title: 'Tickets',
                           page: Container(),
                         ),
                       ],
@@ -544,6 +544,7 @@ class MyHomePage extends StatelessWidget {
                 // Add your settings button functionality here
               },
             ),
+
           ],
         ),
       ),
