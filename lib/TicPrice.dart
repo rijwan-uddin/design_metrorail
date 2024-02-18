@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:design_metrorail/main.dart';
+import 'settings.dart';
 class TicketPrice extends StatefulWidget {
   const TicketPrice({Key? key}) : super(key: key);
 
@@ -556,7 +557,10 @@ class _TicketPriceState extends State<TicketPrice> {
             ),
             IconButton(
               icon: const Icon(Icons.settings),
-              onPressed: () {
+              onPressed: () {Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const settings()),
+              );
                 // Add your settings button functionality here
               },
             ),

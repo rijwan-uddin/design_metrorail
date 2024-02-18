@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:design_metrorail/main.dart';
+import 'settings.dart';
 class Schedule extends StatelessWidget {
   const Schedule({super.key});
 
@@ -10,9 +11,10 @@ class Schedule extends StatelessWidget {
         title: Text('Schedule'),
       ),
       body: ListView(
+
         children: const [
           Positioned(
-            right: 40,
+            bottom: 20,
             child: Text(
               'Saturday',
               //textAlign: TextAlign.center,
@@ -22,7 +24,7 @@ class Schedule extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 6,
+            bottom: 20,
 
             child: Text(
               'Sunday',
@@ -33,7 +35,7 @@ class Schedule extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 8,
+            bottom: 20,
             child: Text(
               'Monday',
               //textAlign: TextAlign.center,
@@ -43,7 +45,7 @@ class Schedule extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 8,
+            bottom: 20,
             child: Text(
               'Tuesday',
               //textAlign: TextAlign.center,
@@ -53,7 +55,7 @@ class Schedule extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 8,
+            bottom: 20,
             child: Text(
               'Wednesday',
               //textAlign: TextAlign.center,
@@ -63,7 +65,7 @@ class Schedule extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 8,
+            bottom: 20,
             child: Text(
               'Thursday',
               //textAlign: TextAlign.center,
@@ -73,7 +75,7 @@ class Schedule extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 8,
+            bottom: 20,
             child: Text(
               'Friday',
               //textAlign: TextAlign.center,
@@ -100,7 +102,10 @@ class Schedule extends StatelessWidget {
             ),
             IconButton(
               icon: const Icon(Icons.settings),
-              onPressed: () {
+              onPressed: () {Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const settings()),
+              );
                 // Add your settings button functionality here
               },
             ),

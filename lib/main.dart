@@ -402,7 +402,7 @@ import 'package:flutter/material.dart';
 import 'TicPrice.dart';
 import 'Schedule_List.dart';
 import 'details.dart';
-
+import 'settings.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -458,7 +458,10 @@ class MyHomePage extends StatelessWidget {
             ),
             ListTile(
               title: const Text('Settings'),
-              onTap: () {
+              onTap: () { Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const settings()),
+              );
                 // Add your drawer item 2 functionality here
               },
             ),
@@ -540,7 +543,10 @@ class MyHomePage extends StatelessWidget {
             ),
             IconButton(
               icon: const Icon(Icons.settings),
-              onPressed: () {
+              onPressed: () {Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const settings()),
+              );
                 // Add your settings button functionality here
               },
             ),
