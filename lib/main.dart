@@ -300,6 +300,8 @@ import 'TicPrice.dart';
 import 'Schedule_List.dart';
 import 'details.dart';
 import 'settings.dart';
+import 'mrtcard.dart';
+import 'tickets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -463,8 +465,8 @@ class MenuButtons extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 MenuItem(title: 'Schedule', page: Schedule()),
-                MenuItem(title: 'MRT Card', page: Schedule()),
-                MenuItem(title: 'Tickets', page: Schedule()),
+                MenuItem(title: 'MRT Card', page: mrtcard()),
+                MenuItem(title: 'Tickets', page: tickets()),
               ],
             ),
           ],
