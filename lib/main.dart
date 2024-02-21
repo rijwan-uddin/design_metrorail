@@ -466,7 +466,7 @@ class MenuButtons extends StatelessWidget {
               children: [
                 MenuItem(title: 'Schedule', page: Schedule()),
                 MenuItem(title: 'MRT Card', page: mrtcard()),
-                MenuItem(title: 'Tickets', page: tickets()),
+                MenuItem(title: 'Purchase Tickets', page: tickets()),
               ],
             ),
           ],
