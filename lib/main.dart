@@ -466,7 +466,7 @@ class MenuButtons extends StatelessWidget {
               children: [
                 MenuItem(title: 'Schedule', page: Schedule()),
                 MenuItem(title: 'MRT Card', page: mrtcard()),
-                MenuItem(title: 'Purchase Tickets', page: tickets()),
+                MenuItem(title: 'Purchase ', page: tickets()),
               ],
             ),
           ],
@@ -582,6 +582,7 @@ class BottomAppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      color: Colors.transparent,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -607,4 +608,28 @@ class BottomAppBarWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+class FadePageRoute<T> extends PageRouteBuilder<T> {
+  final Widget page;
+
+  FadePageRoute({required this.page})
+      : super(
+    pageBuilder: (
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+        ) =>
+    page,
+    transitionsBuilder: (
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+        Widget child,
+        ) =>
+        FadeTransition(
+          opacity: animation,
+          child: child,
+        ),
+  );
 }
