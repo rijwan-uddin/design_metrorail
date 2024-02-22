@@ -35,22 +35,30 @@ class Schedule extends StatelessWidget {
         itemCount: stationNames.length,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+            padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
             child: ElevatedButton(
               onPressed: () {
                 _showPopup(context, stationNames[index]);
               },
               style: ElevatedButton.styleFrom(
-                elevation: 5, // Add shadow
-                primary: Colors.white, // Button color
-                minimumSize: Size(double.infinity, 50), // Set button size
-                alignment: Alignment.centerLeft, // Align text to the left
+                primary: Colors.lightBlue.withOpacity(0.5), // Transparent light blue background color
+                minimumSize: Size(double.infinity, 60), // Set button size
+                padding: EdgeInsets.zero,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                elevation: 5.0, // Add shadow
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0), // Make buttons more curved
+                ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16.0), // Adjust text alignment within the button
-                child: Text(
-                  stationNames[index],
-                  style: TextStyle(color: Colors.black),
+              child: Ink(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Center(
+                  child: Text(
+                    stationNames[index],
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
               ),
             ),
@@ -93,34 +101,8 @@ class Schedule extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Button Clicked'),
-          content: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text('$stationName button clicked!'),
-              SizedBox(height: 20),
-              Table(
-                border: TableBorder.all(),
-                children: List.generate(
-                  6,
-                      (index) => TableRow(
-                    children: List.generate(
-                      6,
-                          (index) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Cell ${index + 1},${index + 1}',
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          content: Text(
+              'Station: $stationName : in peak time train will arrive after 8 minutes and off-peak time it will be 10 minutes. Offday: Friday '),
           actions: <Widget>[
             TextButton(
               onPressed: () {

@@ -65,6 +65,7 @@ flutter:
     - asset/caro2.jpg
     - asset/caro3.jpg
     - asset/caro4.png
+    - asset/mrt1.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
