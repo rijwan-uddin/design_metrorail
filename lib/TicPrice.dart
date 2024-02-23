@@ -71,7 +71,7 @@ class _TicketPriceState extends State<TicketPrice> {
       'Komlapur':100,
       // Add fares for other locations
     },
-    'pallabi':{
+    'Pallabi':{
       'Uttara North': 10.0,
       'Uttara Center': 15.0,
       'Uttara South':30,
