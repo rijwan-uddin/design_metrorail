@@ -23,7 +23,7 @@ class settings extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => profile()),
+                MaterialPageRoute(builder: (context) => ProfilePage()),
               );
               // Action for navigating to profile settings
             },
