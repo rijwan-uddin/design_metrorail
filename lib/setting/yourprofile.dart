@@ -1,50 +1,42 @@
-import 'dart:io';
+/*import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'editprofile.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
 
-  @override
-  _ProfilePageState createState() => _ProfilePageState();
-}
+class ProfilePage extends StatelessWidget {
+  final String initialName;
+  final String initialPhoneNumber;
+  final String initialEmail;
+  final String initialHomeAddress;
+  final String initialImageUrl;
 
-class _ProfilePageState extends State<ProfilePage> {
-  String _name = '';
-  String _phoneNumber = '';
-  String _email = '';
-  String _homeAddress = '';
-  String _imageUrl = '';
-
-  // Method to handle image selection from gallery
-  Future<void> _getImageFromGallery() async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-    if (pickedFile != null) {
-      setState(() {
-        _imageUrl = pickedFile.path;
-      });
-    }
-  }
-
-  // Method to save profile details
-  void _saveProfile() {
-    // Implement saving profile details to backend or local storage
-    // You can access _name, _phoneNumber, _email, _homeAddress, _imageUrl here
-    // For example:
-    print('Name: $_name');
-    print('Phone Number: $_phoneNumber');
-    print('Email: $_email');
-    print('Home Address: $_homeAddress');
-    print('Image URL: $_imageUrl');
-  }
+  const ProfilePage({
+    Key? key,
+    required this.initialName,
+    required this.initialPhoneNumber,
+    required this.initialEmail,
+    required this.initialHomeAddress,
+    required this.initialImageUrl,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Your Profile'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.edit),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfilePageEdit(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -53,68 +45,144 @@ class _ProfilePageState extends State<ProfilePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
-                child: IconButton(
-                  icon: _imageUrl.isNotEmpty
-                      ? CircleAvatar(
-                    radius: 50,
-                    backgroundImage: FileImage(File(_imageUrl)),
-                  )
-                      : CircleAvatar(
-                    radius: 50,
-                    child: Icon(Icons.add_a_photo),
-                  ),
-                  onPressed: _getImageFromGallery,
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: initialImageUrl.isNotEmpty
+                      ? FileImage(File(initialImageUrl))
+                      : AssetImage('assets/default_avatar.png') as ImageProvider<Object>,
+                  child: initialImageUrl.isEmpty
+                      ? Icon(Icons.person, size: 50)
+                      : null,
                 ),
               ),
               SizedBox(height: 20),
-              Text('Name', style: TextStyle(fontSize: 16)),
-              TextFormField(
-                onChanged: (value) {
-                  _name = value;
-                },
-                decoration: InputDecoration(
-                  hintText: 'Enter your name',
-                ),
-              ),
+              Text('Name: $initialName', style: TextStyle(fontSize: 16)),
               SizedBox(height: 20),
-              Text('Phone Number', style: TextStyle(fontSize: 16)),
-              TextFormField(
-                onChanged: (value) {
-                  _phoneNumber = value;
-                },
-                decoration: InputDecoration(
-                  hintText: 'Enter your phone number',
-                ),
-              ),
+              Text('Phone Number: $initialPhoneNumber', style: TextStyle(fontSize: 16)),
               SizedBox(height: 20),
-              Text('Email', style: TextStyle(fontSize: 16)),
-              TextFormField(
-                onChanged: (value) {
-                  _email = value;
-                },
-                decoration: InputDecoration(
-                  hintText: 'Enter your email',
-                ),
-              ),
+              Text('Email: $initialEmail', style: TextStyle(fontSize: 16)),
               SizedBox(height: 20),
-              Text('Home Address', style: TextStyle(fontSize: 16)),
-              TextFormField(
-                onChanged: (value) {
-                  _homeAddress = value;
-                },
-                decoration: InputDecoration(
-                  hintText: 'Enter your home address',
-                ),
-              ),
-              SizedBox(height: 20),
-              Center(
-                child: ElevatedButton(
-                  onPressed: _saveProfile,
-                  child: Text('Save'),
-                ),
-              ),
+              Text('Home Address: $initialHomeAddress', style: TextStyle(fontSize: 16)),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+*/
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'editprofile.dart';
+
+
+class ProfilePage extends StatelessWidget {
+  final String initialName;
+  final String initialPhoneNumber;
+  final String initialEmail;
+  final String initialHomeAddress;
+  final String initialImageUrl;
+
+  const ProfilePage({
+    Key? key,
+    required this.initialName,
+    required this.initialPhoneNumber,
+    required this.initialEmail,
+    required this.initialHomeAddress,
+    required this.initialImageUrl,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Your Profile'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.edit),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfilePageEdit(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage: initialImageUrl.isNotEmpty
+                        ? FileImage(File(initialImageUrl))
+                        : AssetImage(
+                        'assets/default_avatar.png') as ImageProvider<Object>,
+                    child: initialImageUrl.isEmpty
+                        ? Icon(Icons.person, size: 50)
+                        : null,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              buildInfoCard('Name', initialName),
+              SizedBox(height: 20),
+              buildInfoCard('Phone Number', initialPhoneNumber),
+              SizedBox(height: 20),
+              buildInfoCard('Email', initialEmail),
+              SizedBox(height: 20),
+              buildInfoCard('Home Address', initialHomeAddress),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildInfoCard(String title, String info) {
+    return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              info,
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+          ],
         ),
       ),
     );
