@@ -1,3 +1,4 @@
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -172,7 +173,7 @@ class MenuButtons extends StatelessWidget {
               children: [
                 const MenuItem(title: 'Schedule', imagePath: 'asset/mrt4.png', page: Schedule()),
                 MenuItem(title: 'MRT Card', imagePath: 'asset/mrtic2.jpg', page: PassCardForm()),
-                const MenuItem(title: 'Purchase ', imagePath: 'asset/mrt5.jpg', page: tickets()),
+                const MenuItem(title: 'Purchase ', imagePath: 'asset/mrt5.jpg', page: Tickets()),
               ],
             ),
           ],
