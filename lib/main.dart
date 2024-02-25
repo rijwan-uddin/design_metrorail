@@ -7,7 +7,7 @@ import 'details.dart';
 import 'settings.dart';
 import 'mrtcard.dart';
 import 'tickets.dart';
-
+import 'card/passcard.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -155,10 +155,10 @@ class MenuButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        return const Column(
+        return  Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 MenuItem(title: 'Details', imagePath: 'asset/mrt1.png', page: HomePage()),
@@ -170,9 +170,9 @@ class MenuButtons extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                MenuItem(title: 'Schedule', imagePath: 'asset/mrt4.png', page: Schedule()),
-                MenuItem(title: 'MRT Card', imagePath: 'asset/mrtic2.jpg', page: mrtcard()),
-                MenuItem(title: 'Purchase ', imagePath: 'asset/mrt5.jpg', page: tickets()),
+                const MenuItem(title: 'Schedule', imagePath: 'asset/mrt4.png', page: Schedule()),
+                MenuItem(title: 'MRT Card', imagePath: 'asset/mrtic2.jpg', page: PassCardForm()),
+                const MenuItem(title: 'Purchase ', imagePath: 'asset/mrt5.jpg', page: tickets()),
               ],
             ),
           ],

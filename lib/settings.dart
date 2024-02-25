@@ -23,7 +23,7 @@ class settings extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfilePage(initialName: '', initialPhoneNumber: '', initialEmail: '', initialHomeAddress: '', initialImageUrl: '',)),
+                MaterialPageRoute(builder: (context) => ProfilePage()),
               );
               // Action for navigating to profile settings
             },
@@ -49,7 +49,7 @@ class settings extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => privacy()),
+                MaterialPageRoute(builder: (context) => PrivacyPage()),
               );
               // Action for navigating to privacy settings
             },
@@ -62,7 +62,7 @@ class settings extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => security()),
+                MaterialPageRoute(builder: (context) => Security()),
               );
               // Action for navigating to security settings
             },
