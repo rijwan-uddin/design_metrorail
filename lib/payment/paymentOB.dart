@@ -39,29 +39,30 @@ class _PaymentPageState extends State<PaymentPage> {
                 style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10.0),
-              Wrap( // Use Wrap for flexible layout on smaller screens
+              Wrap(
                 runSpacing: 10.0,
                 children: [
                   _buildPaymentMethodOption(
-                    image: Image.asset('assets/images/bkash.png'),
+                    imagePath: 'asset/bksh.png',
                     text: 'bKash',
                     isSelected: _selectedPaymentOption == 0,
                     onTap: () => setState(() => _selectedPaymentOption = 0),
                   ),
                   _buildPaymentMethodOption(
-                    image: Image.asset('assets/images/rocket.png'),
+                    imagePath: 'asset/rock.png',
                     text: 'Rocket',
                     isSelected: _selectedPaymentOption == 1,
                     onTap: () => setState(() => _selectedPaymentOption = 1),
                   ),
                   _buildPaymentMethodOption(
-                    image: Image.asset('assets/images/nagad.png'),
+                    imagePath: 'asset/nagad.png',
                     text: 'Nagad',
                     isSelected: _selectedPaymentOption == 2,
                     onTap: () => setState(() => _selectedPaymentOption = 2),
                   ),
                 ],
               ),
+
               const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
@@ -78,11 +79,13 @@ class _PaymentPageState extends State<PaymentPage> {
   }
 
   Widget _buildPaymentMethodOption({
-    required Image image,
+    required String imagePath,
     required String text,
     required bool isSelected,
     required VoidCallback onTap,
   }) {
+    double imageSize = MediaQuery.of(context).size.width * 0.1; // Adjust the percentage as needed
+
     return Container(
       decoration: BoxDecoration(
         color: isSelected ? Colors.blue[100] : Colors.white,
@@ -100,7 +103,11 @@ class _PaymentPageState extends State<PaymentPage> {
             padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
-                image,
+                Image.asset(
+                  imagePath,
+                  width: imageSize*2,
+                  height: imageSize*2,
+                ),
                 const SizedBox(width: 10.0),
                 Text(
                   text,
@@ -117,4 +124,5 @@ class _PaymentPageState extends State<PaymentPage> {
       ),
     );
   }
+
 }
