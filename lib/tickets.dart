@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'payment/paymentOB.dart';
+
 class Tickets extends StatelessWidget {
   const Tickets({Key? key}) : super(key: key);
 
@@ -7,7 +8,7 @@ class Tickets extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Purchase Ticket'),
+        title: const Text('Purchase Ticket'),
       ),
       body: TicketForm(),
     );
@@ -70,27 +71,15 @@ class _TicketFormState extends State<TicketForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: Offset(0, 3),
-                ),
-              ],
-            ),
-            child: TextFormField(
-              decoration: InputDecoration(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            TextFormField(
+              decoration: const InputDecoration(
                 labelText: 'From',
-                contentPadding: EdgeInsets.all(16),
-                border: InputBorder.none,
+                border: OutlineInputBorder(),
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -102,26 +91,11 @@ class _TicketFormState extends State<TicketForm> {
                 _fromStation = value;
               },
             ),
-          ),
-          SizedBox(height: 16),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: Offset(0, 3),
-                ),
-              ],
-            ),
-            child: TextFormField(
-              decoration: InputDecoration(
+            const SizedBox(height: 20.0),
+            TextFormField(
+              decoration: const InputDecoration(
                 labelText: 'To',
-                contentPadding: EdgeInsets.all(16),
-                border: InputBorder.none,
+                border: OutlineInputBorder(),
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -133,28 +107,13 @@ class _TicketFormState extends State<TicketForm> {
                 _toStation = value;
               },
             ),
-          ),
-          SizedBox(height: 16),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: Offset(0, 3),
-                ),
-              ],
-            ),
-            child: TextFormField(
+            const SizedBox(height: 20.0),
+            TextFormField(
               readOnly: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Date',
+                border: OutlineInputBorder(),
                 suffixIcon: Icon(Icons.calendar_today),
-                contentPadding: EdgeInsets.all(16),
-                border: InputBorder.none,
               ),
               onTap: () {
                 _selectDate(context);
@@ -171,26 +130,11 @@ class _TicketFormState extends State<TicketForm> {
                     : '',
               ),
             ),
-          ),
-          SizedBox(height: 16),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: Offset(0, 3),
-                ),
-              ],
-            ),
-            child: DropdownButtonFormField<String>(
-              decoration: InputDecoration(
+            const SizedBox(height: 20.0),
+            DropdownButtonFormField<String>(
+              decoration: const InputDecoration(
                 labelText: 'Time',
-                contentPadding: EdgeInsets.symmetric(horizontal: 16),
-                border: InputBorder.none,
+                border: OutlineInputBorder(),
               ),
               value: _selectedTime,
               items: _timeOptions.map((String value) {
@@ -211,21 +155,101 @@ class _TicketFormState extends State<TicketForm> {
                 return null;
               },
             ),
-          ),
-          SizedBox(height: 16),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>  PaymentPage(amount: 10000,)),
-                );
-              },
-              child: Text('Proceed'),
+            const SizedBox(height: 20.0),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    Ticket ticket = Ticket(
+                      fromStation: _fromStation!,
+                      toStation: _toStation!,
+                      date: _selectedDate!,
+                      time: _selectedTime!,
+                    );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TicketDisplay(ticket: ticket),
+                      ),
+                    );
+                  }
+                },
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 50.0),
+                  child: Text(
+                    'Proceed',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                ),
+              ),
+
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+class Ticket {
+  final String fromStation;
+  final String toStation;
+  final DateTime date;
+  final String time;
+
+  Ticket({
+    required this.fromStation,
+    required this.toStation,
+    required this.date,
+    required this.time,
+  });
+}
+class TicketDisplay extends StatelessWidget {
+  final Ticket ticket;
+
+  TicketDisplay({required this.ticket});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ticket Details'),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(20.0),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('asset/mrt1.png'), // Add your own image asset for the ticket background
+            
           ),
-        ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'From: ${ticket.fromStation}',
+              style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
+            ),
+            const SizedBox(height: 10.0),
+            Text(
+              'To: ${ticket.toStation}',
+              style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
+            ),
+            const SizedBox(height: 20.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '${ticket.date.day}/${ticket.date.month}/${ticket.date.year}',
+                  style: const TextStyle(fontSize: 16.0, color: Colors.white),
+                ),
+                Text(
+                  'Time: ${ticket.time}',
+                  style: const TextStyle(fontSize: 16.0, color: Colors.white),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

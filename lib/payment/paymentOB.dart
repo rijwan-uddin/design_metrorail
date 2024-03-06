@@ -25,7 +25,7 @@ class _PaymentPageState extends State<PaymentPage> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 600), // Ensure maximum width
+          constraints: BoxConstraints(maxWidth: 200,maxHeight: 500), // Ensure maximum width
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -105,8 +105,8 @@ class _PaymentPageState extends State<PaymentPage> {
               children: [
                 Image.asset(
                   imagePath,
-                  width: imageSize*2,
-                  height: imageSize*2,
+                  width: imageSize*1.5,
+                  height: imageSize*1.5,
                 ),
                 const SizedBox(width: 10.0),
                 Text(
