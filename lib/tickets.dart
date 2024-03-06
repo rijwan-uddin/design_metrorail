@@ -202,8 +202,7 @@ class Ticket {
     required this.date,
     required this.time,
   });
-}
-class TicketDisplay extends StatelessWidget {
+}class TicketDisplay extends StatelessWidget {
   final Ticket ticket;
 
   TicketDisplay({required this.ticket});
@@ -212,43 +211,49 @@ class TicketDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ticket Details'),
+        title: Text('Ticket Details'),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(20.0),
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('asset/mrt1.png'), // Add your own image asset for the ticket background
-            
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'From: ${ticket.fromStation}',
-              style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
+      body: Center(
+        child: Card(
+          elevation: 4.0, // Adjust elevation as needed
+          child: Container(
+            width: 300.0, // Adjust the width as needed
+            padding: EdgeInsets.all(20.0),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('asset/mrt1.png'), // Add your own image asset for the ticket background
+                fit: BoxFit.cover,
+              ),
             ),
-            const SizedBox(height: 10.0),
-            Text(
-              'To: ${ticket.toStation}',
-              style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
-            ),
-            const SizedBox(height: 20.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${ticket.date.day}/${ticket.date.month}/${ticket.date.year}',
-                  style: const TextStyle(fontSize: 16.0, color: Colors.white),
+                  'From: ${ticket.fromStation}',
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
+                SizedBox(height: 10.0),
                 Text(
-                  'Time: ${ticket.time}',
-                  style: const TextStyle(fontSize: 16.0, color: Colors.white),
+                  'To: ${ticket.toStation}',
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+                SizedBox(height: 20.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '${ticket.date.day}/${ticket.date.month}/${ticket.date.year}',
+                      style: TextStyle(fontSize: 16.0, color: Colors.white),
+                    ),
+                    Text(
+                      'Time: ${ticket.time}',
+                      style: TextStyle(fontSize: 16.0, color: Colors.white),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
