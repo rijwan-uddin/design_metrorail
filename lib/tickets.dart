@@ -217,7 +217,8 @@ class Ticket {
         child: Card(
           elevation: 4.0, // Adjust elevation as needed
           child: Container(
-            width: 300.0, // Adjust the width as needed
+            width: 300.0,
+            height: 300.0, // Adjust the width as needed
             padding: EdgeInsets.all(20.0),
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -230,12 +231,12 @@ class Ticket {
               children: [
                 Text(
                   'From: ${ticket.fromStation}',
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
                 ),
                 SizedBox(height: 10.0),
                 Text(
                   'To: ${ticket.toStation}',
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
                 ),
                 SizedBox(height: 20.0),
                 Row(
@@ -243,11 +244,11 @@ class Ticket {
                   children: [
                     Text(
                       '${ticket.date.day}/${ticket.date.month}/${ticket.date.year}',
-                      style: TextStyle(fontSize: 16.0, color: Colors.white),
+                      style: TextStyle(fontSize: 16.0, color: Colors.black),
                     ),
                     Text(
                       'Time: ${ticket.time}',
-                      style: TextStyle(fontSize: 16.0, color: Colors.white),
+                      style: TextStyle(fontSize: 16.0, color: Colors.black),
                     ),
                   ],
                 ),

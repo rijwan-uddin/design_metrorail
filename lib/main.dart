@@ -62,6 +62,7 @@ class MyHomePage extends StatelessWidget {
             SizedBox(height: 20),
             CarouselSliderWidget(),
             SizedBox(height: 20),
+            features(),
           ],
         ),
       ),
@@ -148,40 +149,40 @@ class SearchBar extends StatelessWidget {
     );
   }
 }
-
 class MenuButtons extends StatelessWidget {
   const MenuButtons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return  Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                MenuItem(title: 'Details', imagePath: 'asset/mrt1.png', page: HomePage()),
-                MenuItem(title: 'Map', imagePath: 'asset/mrt6.png', page: Schedule()),
-                MenuItem(title: 'Ticket Price', imagePath: 'asset/mrt3.png', page: TicketPrice()),
-              ],
-            ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const MenuItem(title: 'Schedule', imagePath: 'asset/mrt4.png', page: Schedule()),
-                MenuItem(title: 'MRT Card', imagePath: 'asset/mrtic2.jpg', page: PassCardForm()),
-                const MenuItem(title: 'Purchase ', imagePath: 'asset/mrt5.jpg', page: Tickets()),
-              ],
-            ),
-          ],
-        );
-      },
+    return Container(   decoration: BoxDecoration(
+      color: Colors.white, // Set the background color for menu buttons
+      borderRadius: BorderRadius.circular(40), // Set the border radius
+    ),// Set the background color for menu buttons
+      child: Column(
+        children: [
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              MenuItem(title: 'Details', imagePath: 'asset/mrt1.png', page: HomePage()),
+              MenuItem(title: 'Map', imagePath: 'asset/mrt6.png', page: Schedule()),
+              MenuItem(title: 'Ticket Price', imagePath: 'asset/mrt3.png', page: TicketPrice()),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const MenuItem(title: 'Schedule', imagePath: 'asset/sch.jpg', page: Schedule()),
+              MenuItem(title: 'MRT Card', imagePath: 'asset/mrtic2.jpg', page: PassCardForm()),
+              const MenuItem(title: 'Purchase ', imagePath: 'asset/mrt5.jpg', page: Tickets()),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
+
 
 class MenuItem extends StatelessWidget {
   final String title;
@@ -212,11 +213,11 @@ class MenuItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           color: Colors.white,
           boxShadow: const [
-            BoxShadow(
+            /*BoxShadow(
               color: Colors.grey,
               spreadRadius: 1,
               blurRadius: 3,
-            ),
+            ),*/
           ],
         ),
         child: Column(
@@ -322,6 +323,39 @@ class BottomAppBarWidget extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const settings()),
               );
             },
+          ),
+        ],
+      ),
+    );
+  }
+}
+class features extends StatelessWidget {
+  const features({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(   decoration: BoxDecoration(
+      color: Colors.white, // Set the background color for menu buttons
+      borderRadius: BorderRadius.circular(40), // Set the border radius
+    ),// Set the background color for menu buttons
+      child: Column(
+        children: [
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              MenuItem(title: 'Details', imagePath: 'asset/mrt1.png', page: HomePage()),
+              MenuItem(title: 'Map', imagePath: 'asset/mrt6.png', page: Schedule()),
+              MenuItem(title: 'Ticket Price', imagePath: 'asset/mrt3.png', page: TicketPrice()),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const MenuItem(title: 'Schedule', imagePath: 'asset/mrt4.png', page: Schedule()),
+              MenuItem(title: 'MRT Card', imagePath: 'asset/mrtic2.jpg', page: PassCardForm()),
+              const MenuItem(title: 'Purchase ', imagePath: 'asset/mrt5.jpg', page: Tickets()),
+            ],
           ),
         ],
       ),
