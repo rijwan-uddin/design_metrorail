@@ -211,7 +211,7 @@ class Ticket {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ticket Details'),
+        title: const Text('Ticket Details'),
       ),
       body: Center(
         child: Card(
@@ -219,8 +219,8 @@ class Ticket {
           child: Container(
             width: 300.0,
             height: 300.0, // Adjust the width as needed
-            padding: EdgeInsets.all(20.0),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.all(20.0),
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('asset/mrt1.png'), // Add your own image asset for the ticket background
                 fit: BoxFit.cover,
@@ -231,24 +231,24 @@ class Ticket {
               children: [
                 Text(
                   'From: ${ticket.fromStation}',
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
+                  style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 Text(
                   'To: ${ticket.toStation}',
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
+                  style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       '${ticket.date.day}/${ticket.date.month}/${ticket.date.year}',
-                      style: TextStyle(fontSize: 16.0, color: Colors.black),
+                      style: const TextStyle(fontSize: 16.0, color: Colors.black),
                     ),
                     Text(
                       'Time: ${ticket.time}',
-                      style: TextStyle(fontSize: 16.0, color: Colors.black),
+                      style: const TextStyle(fontSize: 16.0, color: Colors.black),
                     ),
                   ],
                 ),

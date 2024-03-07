@@ -55,14 +55,16 @@ class MyHomePage extends StatelessWidget {
 
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,),
             ),
-            SizedBox(height: 20),
-            SearchBar(),
-            SizedBox(height: 10),
-            MenuButtons(),
+             SizedBox(height: 20),
+             SearchBar(),
             SizedBox(height: 20),
             CarouselSliderWidget(),
-            SizedBox(height: 20),
-            features(),
+            SizedBox(height: 10),
+            MenuButtons(),
+            // SizedBox(height: 20),
+            // CarouselSliderWidget(),
+            // SizedBox(height: 20),
+            // features(),
           ],
         ),
       ),
@@ -156,15 +158,15 @@ class MenuButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(   decoration: BoxDecoration(
       color: Colors.white, // Set the background color for menu buttons
-      borderRadius: BorderRadius.circular(40), // Set the border radius
+      borderRadius: BorderRadius.circular(40) // Set the border radius
     ),// Set the background color for menu buttons
       child: Column(
         children: [
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              MenuItem(title: 'Details', imagePath: 'asset/mrt1.png', page: HomePage()),
-              MenuItem(title: 'Map', imagePath: 'asset/mrt6.png', page: Schedule()),
+              MenuItem(title: 'Details', imagePath: 'asset/det.jpg', page: HomePage()),
+              MenuItem(title: 'Map', imagePath: 'asset/map.png', page: Schedule()),
               MenuItem(title: 'Ticket Price', imagePath: 'asset/mrt3.png', page: TicketPrice()),
             ],
           ),
@@ -173,7 +175,7 @@ class MenuButtons extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const MenuItem(title: 'Schedule', imagePath: 'asset/sch.jpg', page: Schedule()),
-              MenuItem(title: 'MRT Card', imagePath: 'asset/mrtic2.jpg', page: PassCardForm()),
+              MenuItem(title: 'MRT Card', imagePath: 'asset/card.jpg', page: PassCardForm()),
               const MenuItem(title: 'Purchase ', imagePath: 'asset/mrt5.jpg', page: Tickets()),
             ],
           ),
@@ -205,6 +207,7 @@ class MenuItem extends StatelessWidget {
           MaterialPageRoute(builder: (context) => page),
         );
       },
+
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10),
         width: MediaQuery.of(context).size.width * 0.20,
@@ -220,6 +223,7 @@ class MenuItem extends StatelessWidget {
             ),*/
           ],
         ),
+
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -228,7 +232,7 @@ class MenuItem extends StatelessWidget {
                 imagePath,
                 width: double.infinity, // Match parent width
                 height: double.infinity, // Match parent height
-                fit: BoxFit.cover, // Ensure the image fills the container
+                // fit: BoxFit.cover, // Ensure the image fills the container
               ),
             ),
             const SizedBox(height: 5),
