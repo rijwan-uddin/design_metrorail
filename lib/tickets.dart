@@ -1,5 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'payment/paymentOB.dart';
+import 'package:barcode_widget/barcode_widget.dart';
+
 
 class Tickets extends StatelessWidget {
   const Tickets({Key? key}) : super(key: key);

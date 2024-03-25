@@ -306,7 +306,7 @@ class BottomAppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      color: Colors.transparent,
+      color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
