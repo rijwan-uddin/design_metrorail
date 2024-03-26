@@ -1,5 +1,5 @@
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-
+import 'map.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'TicPrice.dart';
@@ -166,7 +166,7 @@ class MenuButtons extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               MenuItem(title: 'Details', imagePath: 'asset/det.jpg', page: HomePage()),
-              MenuItem(title: 'Map', imagePath: 'asset/map.png', page: Schedule()),
+              MenuItem(title: 'Map', imagePath: 'asset/map.png', page: Map()),
               MenuItem(title: 'Ticket Price', imagePath: 'asset/mrt3.png', page: TicketPrice()),
             ],
           ),
@@ -348,7 +348,7 @@ class features extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               MenuItem(title: 'Details', imagePath: 'asset/mrt1.png', page: HomePage()),
-              MenuItem(title: 'Map', imagePath: 'asset/mrt6.png', page: Schedule()),
+              MenuItem(title: 'Map', imagePath: 'asset/mrt6.png', page: Map()),
               MenuItem(title: 'Ticket Price', imagePath: 'asset/mrt3.png', page: TicketPrice()),
             ],
           ),
